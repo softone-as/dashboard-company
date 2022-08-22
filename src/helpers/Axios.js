@@ -33,22 +33,17 @@ const axiosInstance = (url = "") => {
         }
     );
 
-    // axiosConfig.interceptors.response.use(
-    //     (res) => {
-    //         return res;
-    //     },
-    //     (error) => {
-    //         // console.log(error);
-    //         // if (error.response.status === 401) {
-    //         //     AuthService.login().then((res) => {
-    //         //         const { access_token, expires_in } = res.data;
-    //         //         localStorage.setItem("access_token", access_token);
-    //         //         localStorage.setItem("expires_in", expires_in);
-    //         //     });
-    //         // }
-    //         if (error.response.data) return Promise.reject(error.response.data);
-    //     }
-    // );
+    axiosConfig.interceptors.response.use(
+        (res) => {
+            return res;
+        },
+        (error) => {
+            AuthService.login().then((res) => {
+                localStorage.setItem("access_token", res.data.access_token);
+                localStorage.setItem("expires_in", res.data.expires_in);
+            });
+        }
+    );
 
     return axiosConfig;
 };
