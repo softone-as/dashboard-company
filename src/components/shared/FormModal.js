@@ -14,8 +14,8 @@ export default function FormModal({
             onOk={() => {
                 form.validateFields()
                     .then((values) => {
-                        form.resetFields();
                         handleOk(values);
+                        form.resetFields();
                     })
                     .catch((info) => {
                         console.log("Validate Failed:", info);
