@@ -11,21 +11,21 @@ const axiosInstance = (url = "") => {
 
     axiosConfig.interceptors.request.use(
         async (config) => {
-            const accessToken = localStorage.getItem("access_token");
-            const accessTokenExpired = localStorage.getItem("expires_in");
-            const currentTime = new Date().getTime() / 1000;
+            // const accessToken = localStorage.getItem("access_token");
+            // const accessTokenExpired = localStorage.getItem("expires_in");
+            // const currentTime = new Date().getTime() / 1000;
 
-            if (accessToken) {
-                if (accessTokenExpired <= currentTime) {
-                    AuthService.login().then((res) => {
-                        localStorage.setItem(
-                            "access_token",
-                            res.data.access_token
-                        );
-                        localStorage.setItem("expires_in", res.data.expires_in);
-                    });
-                }
-            }
+            // if (accessToken) {
+            //     if (accessTokenExpired <= currentTime) {
+            //         AuthService.login().then((res) => {
+            //             localStorage.setItem(
+            //                 "access_token",
+            //                 res.data.access_token
+            //             );
+            //             localStorage.setItem("expires_in", res.data.expires_in);
+            //         });
+            //     }
+            // }
             return config;
         },
         (error) => {

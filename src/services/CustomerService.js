@@ -1,5 +1,4 @@
 import axiosInstance from "../helpers/Axios";
-const accessToken = localStorage.getItem("access_token");
 
 export const CustomerService = {
     getCustomer,
@@ -9,6 +8,7 @@ export const CustomerService = {
 };
 
 function getCustomer() {
+    const accessToken = localStorage.getItem("access_token");
     return axiosInstance("https://mitramas-test.herokuapp.com/customers").get(
         "",
         {
@@ -20,6 +20,7 @@ function getCustomer() {
 }
 
 function addCustomer(values) {
+    const accessToken = localStorage.getItem("access_token");
     const { name, address, country, phone_number, job_title, status } = values;
     let dataCustomer = {
         name,
@@ -42,6 +43,7 @@ function addCustomer(values) {
 }
 
 function deleteCustomer(id) {
+    const accessToken = localStorage.getItem("access_token");
     return axiosInstance(
         "https://mitramas-test.herokuapp.com/customers"
     ).delete("", {
@@ -56,6 +58,7 @@ function deleteCustomer(id) {
 }
 
 function updateCustomer(values) {
+    const accessToken = localStorage.getItem("access_token");
     const { id, name, address, country, phone_number, job_title, status } =
         values;
     let dataCustomer = {
